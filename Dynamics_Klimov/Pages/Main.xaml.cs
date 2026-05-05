@@ -24,5 +24,12 @@ namespace Dynamics_Klimov.Pages
         {
             InitializeComponent();
         }
+
+        private void OpenPageChart(object sender, RoutedEventArgs e)
+        {
+            float value = Convert.ToInt32(tbValue.Text);
+            mainWindow.pointsInfo.Add(new Classes.PointInfo(value));
+            mainWindow.OpenPages(MainWindow.pages.chart);
+        }
     }
 }

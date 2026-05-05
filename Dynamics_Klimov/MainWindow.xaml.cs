@@ -20,9 +20,25 @@ namespace Dynamics_Klimov
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Classes.PointInfo> pointInfo = new List<Classes.PointInfo>();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public enum pages
+        {
+            main,
+            chart
+        }
+
+        public void OpenPages(pages _pages)
+        {
+            if (_pages == pages.main)
+            {
+                frame.Navigate(new Pages.Main(this));
+            }
         }
     }
 }
