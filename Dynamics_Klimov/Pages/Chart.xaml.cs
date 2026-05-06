@@ -27,6 +27,8 @@ namespace Dynamics_Klimov.Pages
         public double maxValue = 0;
         double averageValue = 0;
 
+        private Line _averageLine;
+
         public DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
         public Chart(MainWindow mainWindow)
@@ -118,6 +120,19 @@ namespace Dynamics_Klimov.Pages
                     mainWindow.pointInfo[i].line.Stroke = Brushes.Green;
                 }
             }
+
+            if (_averageLine != null)
+                canvas.Children.Remove(_averageLine);
+
+            double averageY = actualHeightCanvas - ((averageValue / maxValue) * actualHeightCanvas);
+            _averageLine = new Line();
+            _averageLine.X1 = 0;
+            _averageLine.X2 = mainWindow.pointInfo.Count * 20;
+            _averageLine.Y1 = averageY;
+            _averageLine.Y2 = averageY;
+            _averageLine.Stroke = Brushes.Blue;
+            _averageLine.StrokeThickness = 2;
+            canvas.Children.Add(_averageLine);
 
             canvas.Width = mainWindow.pointInfo.Count * 20 + 300;
             scroll.ScrollToHorizontalOffset(canvas.Width);

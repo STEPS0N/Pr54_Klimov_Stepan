@@ -25,6 +25,7 @@ namespace Dynamics_Klimov
         public MainWindow()
         {
             InitializeComponent();
+            OpenPages(pages.main);
         }
 
         public enum pages
@@ -38,6 +39,10 @@ namespace Dynamics_Klimov
             if (_pages == pages.main)
             {
                 frame.Navigate(new Pages.Main(this));
+            }
+            else if (_pages == pages.chart)
+            {
+                frame.Navigate(new Pages.Chart(this));
             }
         }
     }
